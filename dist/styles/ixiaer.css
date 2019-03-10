@@ -9,7 +9,7 @@
 }
 
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
-.ixiaer::before {
+.ixiaer {
   font-family: "ixiaer" !important;
   font-style: normal;
   font-weight: normal !important;

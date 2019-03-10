@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "Integration svg-sprite and webfonts-generator simple CLI.",
   "main": "index.js",
-  "bin": "bin/icon.js",
+  "bin": {
+    "ixiaer-icon": "bin/cli.js"
+  },
   "scripts": {
     "icon": "bin/icon.js",
     "release": "standard-version",
