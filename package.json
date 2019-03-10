@@ -1,0 +1,58 @@
+{
+  "name": "@ixiaer/icon",
+  "version": "0.1.0",
+  "description": "Integration svg-sprite and webfonts-generator simple CLI.",
+  "main": "index.js",
+  "bin": "bin/icon.js",
+  "scripts": {
+    "icon": "bin/icon.js",
+    "release": "standard-version",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ixiaer/icon.git"
+  },
+  "keywords": [
+    "cli",
+    "icon",
+    "icons",
+    "generator",
+    "svg",
+    "ttf",
+    "eot",
+    "woff",
+    "woff2",
+    "font",
+    "sprite"
+  ],
+  "author": "ixiaer",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 6.4.0"
+  },
+  "bugs": {
+    "url": "https://github.com/ixiaer/icon/issues"
+  },
+  "homepage": "https://github.com/ixiaer/icon#readme",
+  "dependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "eslint": "^5.15.1",
+    "eslint-config-canonical-jsdoc": "^1.2.22",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "fast-glob": "^2.2.6",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "minimist": "^1.2.0",
+    "standard-version": "^5.0.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "svg-sprite": "^1.5.0",
+    "webfonts-generator": "^0.4.0"
+  }
+}
