@@ -123,8 +123,8 @@ ixiaer-icon config/my-config.js
 ### Templates
 
 * [.iconrc.js](.iconrc.js)
-* [svg-sprite.hbs](template/svg-sprite.hbs)
-* [webfonts-generator.hbs](template/webfonts-generator.hbs)
+* [svg-sprite.hbs](templates/svg-sprite.hbs)
+* [webfonts-generator.hbs](templates/webfonts-generator.hbs)
 
 Step 2 - Usage
 --------------
