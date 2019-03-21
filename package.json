@@ -1,19 +1,18 @@
 {
   "name": "@ixiaer/icon",
   "version": "0.1.0",
-  "description": "Integration svg-sprite and webfonts-generator simple CLI.",
+  "description": "Responsive website icon solution. Integration svg-sprite and webfonts-generator simple CLI. Support multi-color(symbol) and single color(font) icons.",
   "main": "index.js",
   "bin": {
+    "icon": "bin/cli.js",
     "ixiaer-icon": "bin/cli.js"
   },
   "scripts": {
-    "icon": "bin/icon.js",
-    "release": "standard-version",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ixiaer/icon.git"
+    "url": "https://github.com/ixiaer/icon.git"
   },
   "keywords": [
     "cli",

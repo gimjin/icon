@@ -8,24 +8,23 @@ var webfontsGenerator = require('../lib/webfonts-generator.js')
 
 // CLI help.
 if (argv.h || argv.help) {
-  console.log('Usage: @ixiaer/icon <config>')
+  console.info('Usage: ixiaer-icon <config>')
   process.exit()
 }
 
 // Find .iconrc.(js|json) package.json(iconrc) custom config file.
 try {
   var config
-  if (argv._.length === 1) { // set config file
+  if (argv._.length === 1) {
+    // set config file
     config = require(
       path.resolve(process.cwd(), argv._[0])
     )
-  } else if (process.env.npm_package_iconrc) { // find package.json setting
+  } else if (process.env.npm_package_iconrc) {
+    // find package.json setting
     config = process.env.npm_package_iconrc
   } else {
-    /**
-     * top-most EditorConfig file
-     * @return Array
-     */
+    // top-most EditorConfig file
     var configs = fg.sync(path.resolve(process.cwd(), '**/.iconrc.(js|json)'), {
       dot: true,
       deep: true,
@@ -33,12 +32,16 @@ try {
     })
     config = require(configs[0])
   }
+  // There is no config file in the project, use the icon's default config file
+  if (config) {
+    config = require('../.iconrc.js')
+  }
 } catch (e) {
   throw e
 }
 
 // Compile svg and symbol js file.
-if (config.symbol !== undefined) {
+if (config.symbol) {
   svgSprite(
     config.symbol.name,
     config.symbol.icons,
@@ -49,14 +52,13 @@ if (config.symbol !== undefined) {
 }
 
 // Compile fonts and fonts css file.
-if (config.font !== undefined) {
+if (config.font) {
   webfontsGenerator(
     config.font.name,
     config.font.icons,
     config.font.template,
     config.font.fontsDest,
     config.font.cssDest,
-    config.font.cssFontsUrl,
     config.font.fontType
   )
 }
