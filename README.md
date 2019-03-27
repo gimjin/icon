@@ -3,10 +3,10 @@
 Installation
 ------------
 
-To install *@ixiaer/icon* globally
+To install *@ixiaer/icon*
 
 ```bash
-npm install @ixiaer/icon -g
+npm install @ixiaer/icon
 ```
 
 Getting started
@@ -21,11 +21,13 @@ Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these ste
 Step 1 - Generator
 ------------------
 
-### API
+### Node API
 
-###### ES6 modules
 ```javascript
+// ES6 modules
 import svgSprite from '@ixiaer/icon/lib/svg-sprite.js'
+// also use CommonJS
+var webfontsGenerator require('@ixiaer/icon/lib/webfonts-generator.js')
 
 /**
  * Compile svg and symbol js file.
@@ -43,11 +45,6 @@ svgSprite(
   'assets/images',
   'assets/scripts'
 )
-```
-
-###### CommonJS
-```javascript
-var webfontsGenerator require('@ixiaer/icon/lib/webfonts-generator.js')
 
 /**
  * Compile fonts and css file.
@@ -113,11 +110,16 @@ module.exports = {
 
 ```bash
 # automatically
-icon
+npx icon
 # or assign config file
-icon config/my-config.js
+npx icon config/my-config.js
 # or use ixiaer-icon
-ixiaer-icon config/my-config.js
+npx ixiaer-icon config/my-config.js
+# package.json scripts
+# "scripts": {
+#   "icon": "ixiaer-icon"
+# }
+npm run icon
 ```
 
 ### Templates
@@ -129,14 +131,15 @@ ixiaer-icon config/my-config.js
 Step 2 - Usage
 --------------
 
-### Font class
+### Icon font
 
 * Support **single color** icons
 * Resize by font-size style
 * Support for IE8+, and modern browsers
 
 ```html
-<link rel="stylesheet" href="icon.css">
+<link rel="stylesheet" type="text/css" href="icon.css" />
+<!-- use icon -->
 <i class="icon icon-foo" />
 <i class="icon icon-bar" />
 ```
@@ -149,30 +152,12 @@ Step 2 - Usage
 
 ```html
 <!-- icon.js insert style and svg DOM -->
-<style>
-.icon {
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
-  overflow: hidden;
-}
-</style>
-<svg width="0" height="0" style="position:absolute">
-  <symbol id="icon-foo">...</symbol>
-  <symbol id="icon-bar">...</symbol>
-</svg>
+<script type="text/javascript" src="icon.js"></script>
 <!-- use icon -->
 <svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-foo"></use>
+  <use xlink:href="#icon-foo" />
 </svg>
 <svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-bar"></use>
+  <use xlink:href="#icon-bar" />
 </svg>
 ```
-
-To do
----------
-* [icon-webpack-plugin](#)
-* [vue-icon](#)
-* [react-icon](#)
-* [angular-icon](#)

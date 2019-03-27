@@ -33,7 +33,7 @@ try {
     config = require(configs[0])
   }
   // There is no config file in the project, use the icon's default config file
-  if (config) {
+  if (!config) {
     config = require('../.iconrc.js')
   }
 } catch (e) {
