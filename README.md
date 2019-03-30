@@ -140,8 +140,8 @@ Step 2 - Usage
 ```html
 <link rel="stylesheet" type="text/css" href="icon.css" />
 <!-- use icon -->
-<i class="icon icon-foo" />
-<i class="icon icon-bar" />
+<i class="icon foo" />
+<i class="icon bar" />
 ```
 
 ### Symbol
@@ -155,9 +155,9 @@ Step 2 - Usage
 <script type="text/javascript" src="icon.js"></script>
 <!-- use icon -->
 <svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-foo" />
+  <use xlink:href="#foo" />
 </svg>
 <svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-bar" />
+  <use xlink:href="#bar" />
 </svg>
 ```
