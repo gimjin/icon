@@ -14,7 +14,7 @@ Getting started
 
 Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these steps:
 
-1. Create a config file .iconrc.js, .iconrc.json or an iconrc field in a package.json file, all of which *@ixiaer/icon* will look for and read automatically, or you can specify a configuration file on the command line. If none of the above will use the node_modules/@ixiaer/icon/.iconrc.js
+1. Create a config file icon.config.js, icon.config.json or an icon field in a package.json file, all of which *@ixiaer/icon* will look for and read automatically, or you can specify a configuration file on the command line. If none of the above will use the node_modules/@ixiaer/icon/icon.config.js
 2. Register a couple of SVG source files for processing.
 3. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
@@ -25,9 +25,9 @@ Step 1 - Generator
 
 ```javascript
 // ES6 modules
-import svgSprite from '@ixiaer/icon/lib/svg-sprite.js'
+import iconSymbol from '@ixiaer/icon/lib/icon-symbol.js'
 // also use CommonJS
-var webfontsGenerator require('@ixiaer/icon/lib/webfonts-generator.js')
+var iconFont require('@ixiaer/icon/lib/icon-font.js')
 
 /**
  * Compile svg and symbol js file.
@@ -38,10 +38,10 @@ var webfontsGenerator require('@ixiaer/icon/lib/webfonts-generator.js')
  * @param  {String|null} jsDest    JavaScript output destination.
  * @return {void}
  */
-svgSprite(
+iconSymbol(
   'icon',
   'assets/icons/*.svg',
-  'assets/templates/svg-sprite.hbs',
+  'assets/templates/icon-symbol.hbs',
   'assets/images',
   'assets/scripts'
 )
@@ -56,10 +56,10 @@ svgSprite(
  * @param  {Array|null}  fontType     Font file types to generate. Possible values: [svg, ttf, woff, woff2, eot].
  * @return {void}
  */
-webfontsGenerator(
+iconFont(
   'icon',
   'assets/icons/*.svg',
-  'assets/templates/webfonts-generator.hbs',
+  'assets/templates/icon-font.hbs',
   'assets/fonts',
   'assets/styles',
   ['svg', 'ttf', 'eot', 'woff', 'woff2']
@@ -83,7 +83,7 @@ module.exports = {
   symbol: {
     name: 'icon',
     icons: 'assets/icons/*.svg',
-    template: 'assets/templates/svg-sprite.hbs',
+    template: 'assets/templates/icon-symbol.hbs',
     svgDest: 'assets/images',
     jsDest: 'assets/scripts'
   },
@@ -98,7 +98,7 @@ module.exports = {
   font: {
     name: 'icon',
     icons: 'assets/icons/*.svg',
-    template: 'assets/templates/webfonts-generator.hbs',
+    template: 'assets/templates/icon-font.hbs',
     fontsDest: 'assets/fonts',
     cssDest: 'assets/styles',
     fontType: ['svg', 'ttf', 'eot', 'woff', 'woff2']
@@ -115,7 +115,7 @@ npx icon
 npx icon config/my-config.js
 # or use ixiaer-icon
 npx ixiaer-icon config/my-config.js
-# package.json scripts
+# or use package.json
 # "scripts": {
 #   "icon": "ixiaer-icon"
 # }
@@ -124,9 +124,9 @@ npm run icon
 
 ### Templates
 
-* [.iconrc.js](.iconrc.js)
-* [svg-sprite.hbs](templates/svg-sprite.hbs)
-* [webfonts-generator.hbs](templates/webfonts-generator.hbs)
+* [icon.config.js](icon.config.js)
+* [icon-symbol.hbs](templates/icon-symbol.hbs)
+* [icon-font.hbs](templates/icon-font.hbs)
 
 Step 2 - Usage
 --------------

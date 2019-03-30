@@ -9,7 +9,7 @@ module.exports = {
   symbol: {
     name: 'icon',
     icons: 'assets/icons/*.svg',
-    template: 'assets/templates/svg-sprite.hbs',
+    template: 'assets/templates/icon-symbol.hbs',
     svgDest: 'assets/images',
     jsDest: 'assets/scripts'
   },
@@ -24,7 +24,7 @@ module.exports = {
   font: {
     name: 'icon',
     icons: 'assets/icons/*.svg',
-    template: 'assets/templates/webfonts-generator.hbs',
+    template: 'assets/templates/icon-font.hbs',
     fontsDest: 'assets/fonts',
     cssDest: 'assets/styles',
     fontType: ['svg', 'ttf', 'eot', 'woff', 'woff2']

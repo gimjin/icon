@@ -3,16 +3,16 @@
 var path = require('path')
 var fg = require('fast-glob')
 var argv = require('minimist')(process.argv.slice(2))
-var svgSprite = require('../lib/svg-sprite.js')
-var webfontsGenerator = require('../lib/webfonts-generator.js')
+var iconSymbol = require('../lib/icon-symbol.js')
+var iconFont = require('../lib/icon-font.js')
 
 // CLI help.
 if (argv.h || argv.help) {
-  console.info('Usage: ixiaer-icon <config>')
+  console.info('Usage: icon <config>')
   process.exit()
 }
 
-// Find .iconrc.(js|json) package.json(iconrc) custom config file.
+// Find icon.config.(js|json) package.json(icon) custom config file.
 try {
   var config
   if (argv._.length === 1) {
@@ -20,12 +20,12 @@ try {
     config = require(
       path.resolve(process.cwd(), argv._[0])
     )
-  } else if (process.env.npm_package_iconrc) {
+  } else if (process.env.npm_package_icon) {
     // find package.json setting
-    config = process.env.npm_package_iconrc
+    config = process.env.npm_package_icon
   } else {
     // top-most EditorConfig file
-    var configs = fg.sync(path.resolve(process.cwd(), '**/.iconrc.(js|json)'), {
+    var configs = fg.sync(path.resolve(process.cwd(), '**/icon.config.(js|json)'), {
       dot: true,
       deep: true,
       ignore: ['node_modules', 'bower_components', '.DS_Store', '.git']
@@ -34,7 +34,7 @@ try {
   }
   // There is no config file in the project, use the icon's default config file
   if (!config) {
-    config = require('../.iconrc.js')
+    config = require('../icon.config.js')
   }
 } catch (e) {
   throw e
@@ -42,7 +42,7 @@ try {
 
 // Compile svg and symbol js file.
 if (config.symbol) {
-  svgSprite(
+  iconSymbol(
     config.symbol.name,
     config.symbol.icons,
     config.symbol.template,
@@ -53,7 +53,7 @@ if (config.symbol) {
 
 // Compile fonts and fonts css file.
 if (config.font) {
-  webfontsGenerator(
+  iconFont(
     config.font.name,
     config.font.icons,
     config.font.template,
