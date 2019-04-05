@@ -1,6 +1,6 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-# Installation
+# 📦 Installation
 
 To install *@ixiaer/icon*
 
@@ -8,7 +8,7 @@ To install *@ixiaer/icon*
 npm install @ixiaer/icon
 ```
 
-# Getting started
+# 💡 Getting started
 
 Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these steps:
 
@@ -16,7 +16,7 @@ Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these ste
 2. Register a couple of SVG source files for processing.
 3. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
-# Step 1 - Generator
+# ⚙️ Generator
 
 ### Node API
 
@@ -65,7 +65,7 @@ iconFont(
 
 ### CLI
 
-#### 1. Create config
+##### 1. Create config
 
 ```javascript
 // symbol or font can be used alone
@@ -103,7 +103,7 @@ module.exports = {
 }
 ```
 
-#### 2. Processing
+##### 2. Processing
 
 ```bash
 # automatically
@@ -119,13 +119,12 @@ npx ixiaer-icon config/my-config.js
 npm run icon
 ```
 
-#### Templates
+> Templates
+> * [icon.config.js](icon.config.js)
+> * [icon-symbol.hbs](templates/icon-symbol.hbs)
+> * [icon-font.hbs](templates/icon-font.hbs)
 
-* [icon.config.js](icon.config.js)
-* [icon-symbol.hbs](templates/icon-symbol.hbs)
-* [icon-font.hbs](templates/icon-font.hbs)
-
-# Step 2 - Usage
+# 💎 Usage
 
 ### Font
 
