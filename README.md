@@ -1,7 +1,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-Installation
-------------
+# Installation
+---
 
 To install *@ixiaer/icon*
 
@@ -9,8 +9,8 @@ To install *@ixiaer/icon*
 npm install @ixiaer/icon
 ```
 
-Getting started
----------------
+# Getting started
+---
 
 Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these steps:
 
@@ -18,10 +18,10 @@ Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these ste
 2. Register a couple of SVG source files for processing.
 3. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
-Step 1 - Generator
-------------------
+# Step 1 - Generator
+---
 
-### Node API
+## Node API
 
 ```javascript
 // ES6 modules
@@ -66,9 +66,9 @@ iconFont(
 )
 ```
 
-### CLI
+## CLI
 
-###### 1. Create config
+#### 1. Create config
 
 ```javascript
 // symbol or font can be used alone
@@ -106,7 +106,7 @@ module.exports = {
 }
 ```
 
-###### 2. Processing
+#### 2. Processing
 
 ```bash
 # automatically
@@ -122,38 +122,55 @@ npx ixiaer-icon config/my-config.js
 npm run icon
 ```
 
-### Templates
+#### Templates
 
 * [icon.config.js](icon.config.js)
 * [icon-symbol.hbs](templates/icon-symbol.hbs)
 * [icon-font.hbs](templates/icon-font.hbs)
 
-Step 2 - Usage
---------------
+# Step 2 - Usage
+---
 
-### Icon font
+## Font
 
 * Support **single color** icons
 * Resize by font-size style
 * Support for IE8+, and modern browsers
 
+```javascript
+// Webpack
+import 'assets/styles/icon.css'
+```
+
 ```html
-<link rel="stylesheet" type="text/css" href="icon.css" />
-<!-- use icon -->
+<!-- Or Browser -->
+<link rel="stylesheet" type="text/css" href="assets/styles/icon.css" />
+```
+
+```html
+<!-- Use icons -->
 <i class="icon foo" />
 <i class="icon bar" />
 ```
 
-### Symbol
+## Symbol
 
 * Support for **multi-color** icons
 * Resize by font-size style
 * Support for IE9+, and modern browsers
 
+```javascript
+// Webpack
+import 'assets/scripts/icon.js'
+```
+
 ```html
-<!-- icon.js insert style and svg DOM -->
-<script type="text/javascript" src="icon.js"></script>
-<!-- use icon -->
+<!-- Or Browser -->
+<script type="text/javascript" src="assets/scripts/icon.js"></script>
+```
+
+```html
+<!-- Use icons -->
 <svg class="icon" aria-hidden="true">
   <use xlink:href="#foo" />
 </svg>
