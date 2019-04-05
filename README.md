@@ -18,7 +18,7 @@ Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these ste
 
 # Step 1 - Generator
 
-## Node API
+### Node API
 
 ```javascript
 // ES6 modules
@@ -63,7 +63,7 @@ iconFont(
 )
 ```
 
-## CLI
+### CLI
 
 #### 1. Create config
 
@@ -127,7 +127,7 @@ npm run icon
 
 # Step 2 - Usage
 
-## Font
+### Font
 
 * Support **single color** icons
 * Resize by font-size style
@@ -149,7 +149,7 @@ import 'assets/styles/icon.css'
 <i class="icon bar" />
 ```
 
-## Symbol
+### Symbol
 
 * Support for **multi-color** icons
 * Resize by font-size style
