@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/ixiaer/icon/compare/v1.0.4...v1.1.0) (2019-04-06)
+
+
+### Features
+
+* **template:** update font and symbol templates ([8f53485](https://github.com/ixiaer/icon/commit/8f53485))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/ixiaer/icon/compare/v1.0.3...v1.0.4) (2019-04-05)
 
