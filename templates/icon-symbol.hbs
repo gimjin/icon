@@ -1,8 +1,3 @@
-/**
- * @name liteready
- * @author nicbell
- * @see https://github.com/nicbell/liteready
- */
 function liteready (callback) {
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     // Already ready or interactive, execute callback
@@ -30,6 +25,6 @@ liteready(function () {
   // add style DOM
   var style = document.createElement('style')
   style.type = 'text/css'
-  style.innerHTML = '.{{name}} { width: 1em; height: 1em; fill: currentColor; overflow: hidden; }'
+  style.innerHTML = '.{{name}} { width: 1em; height: 1em; fill: currentColor; vertical-align: middle; display: inline-block; line-height: 1; overflow: hidden; }'
   body.appendChild(style)
 })

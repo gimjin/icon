@@ -1,6 +1,8 @@
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![JavaScript Style Guide](https://img.shields.io/github/package-json/dependency-version/ixiaer/icon/dev/eslint-config-standard.svg)](https://standardjs.com) [![Conventional Commits](https://img.shields.io/github/package-json/dependency-version/ixiaer/icon/dev/@commitlint/config-conventional.svg)](https://conventionalcommits.org)
 
-# 📦 Installation
+> If you like this project, please reward a star. Thank you 🙏
+
+## 📦 Installation
 
 To install *@ixiaer/icon*
 
@@ -8,7 +10,7 @@ To install *@ixiaer/icon*
 npm install @ixiaer/icon
 ```
 
-# 💡 Getting started
+## 💡 Getting started
 
 Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these steps:
 
@@ -16,9 +18,9 @@ Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these ste
 2. Register a couple of SVG source files for processing.
 3. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
-# ⚙️ Generator
+## ⚙️ Generator
 
-### Node API
+#### Node API
 
 ```javascript
 // ES6 modules
@@ -63,9 +65,9 @@ iconFont(
 )
 ```
 
-### CLI
+#### CLI
 
-##### 1. Create config
+###### 1. Create config
 
 ```javascript
 // symbol or font can be used alone
@@ -103,7 +105,7 @@ module.exports = {
 }
 ```
 
-##### 2. Processing
+###### 2. Processing
 
 ```bash
 # automatically
@@ -124,9 +126,9 @@ npm run icon
 > * [icon-symbol.hbs](templates/icon-symbol.hbs)
 > * [icon-font.hbs](templates/icon-font.hbs)
 
-# 💎 Usage
+## 💎 Usage
 
-### Font
+#### Font
 
 * Support **single color** icons
 * Resize by font-size style
@@ -148,7 +150,7 @@ import 'assets/styles/icon.css'
 <i class="icon bar" />
 ```
 
-### Symbol
+#### Symbol
 
 * Support for **multi-color** icons
 * Resize by font-size style
@@ -173,3 +175,8 @@ import 'assets/scripts/icon.js'
   <use xlink:href="#bar" />
 </svg>
 ```
+
+## 🏆 Available packages
+
+* [icon-ionicons](https://github.com/ixiaer/icon-ionicons)
+* [icon-logos](https://github.com/ixiaer/icon-logos)
