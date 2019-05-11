@@ -1,64 +1,71 @@
 #!/usr/bin/env node
 
-var path = require('path')
-var fg = require('fast-glob')
-var argv = require('minimist')(process.argv.slice(2))
-var iconSymbol = require('../lib/icon-symbol.js')
-var iconFont = require('../lib/icon-font.js')
+const parseArgs = require('minimist')
+const iconSymbol = require('../lib/icon-symbol.js')
+const iconFont = require('../lib/icon-font.js')
+
+// CLI alias
+const argv = parseArgs(process.argv.slice(2), {
+  alias: {
+    'name': 'n',
+    'icons': 'i',
+    'template': 't',
+    'font-dest': 'fontDest',
+    'css-dest': 'cssDest',
+    'font-type': 'fontType',
+    'css-type': 'cssType',
+    'svg-dest': 'svgDest',
+    'js-dest': 'jsDest',
+    'help': 'h'
+  }
+})
 
 // CLI help.
-if (argv.h || argv.help) {
-  console.info('Usage: icon <config>')
+if (argv.help) {
+  console.info('')
+  console.info('Usage: icon [font|symbol] [options] [font|symbol options] [arguments]')
+  console.info('       icon font -n ixiaer -i "icons/*.svg" --css-dest styles/')
+  console.info('')
+  console.info('Options:')
+  console.info('  -n, --name      $ icon -n ixiaer')
+  console.info('  -i, --icons     $ icon -i "icons/*.svg"')
+  console.info('  -t, --template  $ icon -t template/icon-font.hbs')
+  console.info('')
+  console.info('Font options:')
+  console.info('  --font-dest  $ icon --font-dest fonts/')
+  console.info('  --css-dest   $ icon --css-dest styles/')
+  console.info('  --font-type  $ icon --font-type "\'svg\', \'ttf\', \'woff\', \'woff2\', \'eot\']"')
+  console.info('  --css-type   $ icon --css-type "[\'css\', \'scss\', \'less\', \'stylus\']"')
+  console.info('')
+  console.info('Symbol options:')
+  console.info('  --svg-dest  $ icon --svg-dest images/')
+  console.info('  --js-dest   $ icon --js-dest scripts/')
+  console.info('')
   process.exit()
 }
 
-// Find icon.config.(js|json) package.json(icon) custom config file.
-try {
-  var config
-  if (argv._.length === 1) {
-    // set config file
-    config = require(
-      path.resolve(process.cwd(), argv._[0])
-    )
-  } else if (process.env.npm_package_icon) {
-    // find package.json setting
-    config = process.env.npm_package_icon
-  } else {
-    // top-most EditorConfig file
-    var configs = fg.sync(path.resolve(process.cwd(), '**/icon.config.(js|json)'), {
-      dot: true,
-      deep: true,
-      ignore: ['node_modules', 'bower_components', '.DS_Store', '.git']
+console.info('👉 https://github.com/ixiaer/icon 👈')
+console.info('Compiling...')
+
+// Compile fonts and fonts css file.
+if (argv._.includes('font') || argv._.length === 0) {
+  let strToArr = str => {
+    let arr = str.slice(1, -1).split(',')
+    return arr.map(value => {
+      return value.trim().slice(1, -1)
     })
-    config = require(configs[0])
   }
-  // There is no config file in the project, use the icon's default config file
-  if (!config) {
-    config = require('../icon.config.js')
+  // string to array
+  if (argv.fontType) {
+    argv.fontType = strToArr(argv.fontType)
   }
-} catch (e) {
-  throw e
+  if (argv.cssType) {
+    argv.cssType = strToArr(argv.cssType)
+  }
+  iconFont(argv)
 }
 
 // Compile svg and symbol js file.
-if (config.symbol) {
-  iconSymbol(
-    config.symbol.name,
-    config.symbol.icons,
-    config.symbol.template,
-    config.symbol.svgDest,
-    config.symbol.jsDest
-  )
-}
-
-// Compile fonts and fonts css file.
-if (config.font) {
-  iconFont(
-    config.font.name,
-    config.font.icons,
-    config.font.template,
-    config.font.fontsDest,
-    config.font.cssDest,
-    config.font.fontType
-  )
+if (argv._.includes('symbol') || argv._.length === 0) {
+  iconSymbol(argv)
 }

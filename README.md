@@ -1,8 +1,5 @@
-- [x] webpack umd compile
-- [ ] use es6 syntax. setting default argv
-- [ ] support scss, less, stylus
-- [ ] CLI reject config file
-- [ ] use project own stylelint config file fix (Otherwise use icon project stylelint config file).
+
+- [ ] Update DOC
 
 [![JavaScript Style Guide](https://img.shields.io/github/package-json/dependency-version/ixiaer/icon/dev/eslint-config-standard.svg)](https://standardjs.com) [![Conventional Commits](https://img.shields.io/github/package-json/dependency-version/ixiaer/icon/dev/@commitlint/config-conventional.svg)](https://conventionalcommits.org)
 

@@ -5,7 +5,7 @@
   src: {{{src}}};
 }
 
-{{baseSelector}} {
+[class*=" {{fontName}}-"], [class^={{fontName}}-] {
   font-family: "{{fontName}}";
   font-weight: normal;
   font-style: normal;
@@ -17,22 +17,18 @@
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
-
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-
   /* Support for IE. */
   font-feature-settings: "liga";
 }
 {{#each codepoints}}
 
-.{{../classPrefix}}{{@key}}::before {
+.{{../fontName}}-{{@key}}::before {
   content: "\\{{this}}";
 }
 {{/each}}
