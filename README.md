@@ -64,6 +64,7 @@ Symbol options:
 
 ```javascript
 const iconFont require('@ixiaer/icon/lib/icon-font.js')
+const iconSymbol require('@ixiaer/icon/lib/icon-symbol.js')
 
 /**
   * Options
