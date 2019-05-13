@@ -3,6 +3,7 @@
 const parseArgs = require('minimist')
 const iconSymbol = require('../lib/icon-symbol.js')
 const iconFont = require('../lib/icon-font.js')
+const chalk = require('chalk')
 
 // CLI alias
 const argv = parseArgs(process.argv.slice(2), {
@@ -14,7 +15,6 @@ const argv = parseArgs(process.argv.slice(2), {
     'css-dest': 'cssDest',
     'font-type': 'fontType',
     'css-type': 'cssType',
-    'svg-dest': 'svgDest',
     'js-dest': 'jsDest',
     'help': 'h'
   }
@@ -29,22 +29,21 @@ if (argv.help) {
   console.info('Options:')
   console.info('  -n, --name      $ icon -n ixiaer')
   console.info('  -i, --icons     $ icon -i "icons/*.svg"')
-  console.info('  -t, --template  $ icon -t template/icon-font.hbs')
+  console.info('  -t, --template  $ icon -t template/icon-font.css')
   console.info('')
   console.info('Font options:')
   console.info('  --font-dest  $ icon --font-dest fonts/')
   console.info('  --css-dest   $ icon --css-dest styles/')
-  console.info('  --font-type  $ icon --font-type "\'svg\', \'ttf\', \'woff\', \'woff2\', \'eot\']"')
+  console.info('  --font-type  $ icon --font-type "[\'svg\', \'ttf\', \'woff\', \'woff2\', \'eot\']"')
   console.info('  --css-type   $ icon --css-type "[\'css\', \'scss\', \'less\', \'stylus\']"')
   console.info('')
   console.info('Symbol options:')
-  console.info('  --svg-dest  $ icon --svg-dest images/')
   console.info('  --js-dest   $ icon --js-dest scripts/')
   console.info('')
   process.exit()
 }
 
-console.info('👉 https://github.com/ixiaer/icon 👈')
+console.info('👉', chalk.yellowBright('https://github.com/ixiaer/icon'), '👈')
 console.info('Compiling...')
 
 // Compile fonts and fonts css file.
@@ -66,6 +65,6 @@ if (argv._.includes('font') || argv._.length === 0) {
 }
 
 // Compile svg and symbol js file.
-if (argv._.includes('symbol') || argv._.length === 0) {
+if (argv._.includes('symbol')) {
   iconSymbol(argv)
 }

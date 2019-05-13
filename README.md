@@ -1,9 +1,4 @@
-
-- [ ] Update DOC
-
 [![JavaScript Style Guide](https://img.shields.io/github/package-json/dependency-version/ixiaer/icon/dev/eslint-config-standard.svg)](https://standardjs.com) [![Conventional Commits](https://img.shields.io/github/package-json/dependency-version/ixiaer/icon/dev/@commitlint/config-conventional.svg)](https://conventionalcommits.org)
-
-> If you like this project, please reward a star. Thank you 🙏
 
 ## 📦 Installation
 
@@ -21,113 +16,89 @@ Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these ste
 2. Register a couple of SVG source files for processing.
 3. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
+## 🚸 Examples
+
+* [icon-feather](https://github.com/ixiaer/icon-feather)
+* [icon-ionicons](https://github.com/ixiaer/icon-ionicons)
+* [icon-font-awesome](https://github.com/ixiaer/icon-font-awesome)
+* [icon-logos (symbol)](https://github.com/ixiaer/icon-logos)
+
 ## ⚙️ Generator
+
+#### CLI
+
+```bash
+# Icon font.
+npx icon font -i assets/icons/*.svg
+# alias ixiaer-icon
+npx ixiaer-icon symbol -i assets/icons/*.svg
+```
+
+```bash
+# help
+$ icon --help
+
+Usage: icon [font|symbol] [options] [font|symbol options] [arguments]
+       icon font -n ixiaer -i "icons/*.svg" --css-dest styles/
+
+Options:
+  -n, --name      $ icon -n ixiaer
+  -i, --icons     $ icon -i "icons/*.svg"
+  -t, --template  $ icon -t template/icon-font.css
+
+Font options:
+  --font-dest  $ icon --font-dest fonts/
+  --css-dest   $ icon --css-dest styles/
+  --font-type  $ icon --font-type "['svg', 'ttf', 'woff', 'woff2', 'eot']"
+  --css-type   $ icon --css-type "['css', 'scss', 'less', 'stylus']"
+
+Symbol options:
+  --js-dest   $ icon --js-dest scripts/
+```
+
+> Templates
+> * [icon-font.css](templates/icon-font.css)
+> * [icon-symbol.js](templates/icon-symbol.js)
 
 #### Node API
 
 ```javascript
-// ES6 modules
-import iconSymbol from '@ixiaer/icon/lib/icon-symbol.js'
-// also use CommonJS
-var iconFont require('@ixiaer/icon/lib/icon-font.js')
+const iconFont require('@ixiaer/icon/lib/icon-font.js')
 
 /**
- * Compile svg and symbol js file.
- * @param  {String|null} name      Name of svg and js file.
- * @param  {String}      icons     List of SVG files.
- * @param  {String|null} template  JavaScript output Mustache template.
- * @param  {String|null} svgDest   Main output directory.
- * @param  {String|null} jsDest    JavaScript output destination.
- * @return {void}
- */
-iconSymbol(
-  'icon',
-  'assets/icons/*.svg',
-  'assets/templates/icon-symbol.hbs',
-  'assets/images',
-  'assets/scripts'
-)
+  * Options
+  * @param {Object} opt - New assign options.
+  * @param {string} opt.name - Name of font and base name of font files.
+  * @param {string} opt.icons - List of SVG files.
+  * @param {string} opt.template - Path of custom CSS template. Generator uses handlebars templates.
+  * 
+  * Font options
+  * @param {string} opt.fontDest - Directory for generated font files.
+  * @param {string} opt.cssDest - Path for generated CSS file.
+  * @param {Array} opt.fontType - Font file types to generate. Possible values: ['svg', 'ttf', 'woff', 'woff2', 'eot'].
+  * @param {Array} opt.cssType - Css file types to generate. Possible values: ['css', 'scss', 'less', 'stylus'].
+  *
+  * Symbol options
+  * @param {string} opt.jsDest - JavaScript output destination.
+  */
+ 
+iconFont({
+  name: 'ixiaer',
+  icons: '../templates/logo.svg',
+  template: '../templates/icon-font.css',
+  fontDest: 'assets/fonts',
+  cssDest: 'assets/styles',
+  fontType: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
+  cssType: ['css', 'scss', 'less', 'stylus']
+})
 
-/**
- * Compile fonts and css file.
- * @param  {String|null} name         Name of font and base name of font files.
- * @param  {String}      icons        List of SVG files.
- * @param  {String|null} template     Path of custom CSS template. Generator uses handlebars templates.
- * @param  {String|null} fontsDest    Directory for generated font files.
- * @param  {String|null} cssDest      Path for generated CSS file.
- * @param  {Array|null}  fontType     Font file types to generate. Possible values: [svg, ttf, woff, woff2, eot].
- * @return {void}
- */
-iconFont(
-  'icon',
-  'assets/icons/*.svg',
-  'assets/templates/icon-font.hbs',
-  'assets/fonts',
-  'assets/styles',
-  ['svg', 'ttf', 'eot', 'woff', 'woff2']
-)
+iconSymbol({
+  name: 'ixiaer',
+  icons: '../templates/logo.svg',
+  template: '../templates/icon-symbol.js',
+  jsDest: 'assets/scripts'
+})
 ```
-
-#### CLI
-
-###### 1. Create config
-
-```javascript
-// symbol or font can be used alone
-module.exports = {
-  /**
-   * {String|null} name      Name of svg and js file.
-   * {String}      icons     List of SVG files.
-   * {String|null} template  JavaScript output Mustache template.
-   * {String|null} svgDest   Main output directory.
-   * {String|null} jsDest    JavaScript output destination.
-   */
-  symbol: {
-    name: 'icon',
-    icons: 'assets/icons/*.svg',
-    template: 'assets/templates/icon-symbol.hbs',
-    svgDest: 'assets/images',
-    jsDest: 'assets/scripts'
-  },
-  /**
-   * {String|null} name       Name of font and base name of font files.
-   * {String}      icons      List of SVG files.
-   * {String|null} template   Path of custom CSS template. Generator uses handlebars templates.
-   * {String|null} fontsDest  Directory for generated font files.
-   * {String|null} cssDest    Path for generated CSS file.
-   * {Array|null}  fontType   Font file types to generate. Possible values: [svg, ttf, woff, woff2, eot].
-   */
-  font: {
-    name: 'icon',
-    icons: 'assets/icons/*.svg',
-    template: 'assets/templates/icon-font.hbs',
-    fontsDest: 'assets/fonts',
-    cssDest: 'assets/styles',
-    fontType: ['svg', 'ttf', 'eot', 'woff', 'woff2']
-  }
-}
-```
-
-###### 2. Processing
-
-```bash
-# automatically
-npx icon
-# or assign config file
-npx icon config/my-config.js
-# or use ixiaer-icon
-npx ixiaer-icon config/my-config.js
-# or use package.json
-# "scripts": {
-#   "icon": "ixiaer-icon"
-# }
-npm run icon
-```
-
-> Templates
-> * [icon.config.js](icon.config.js)
-> * [icon-symbol.hbs](templates/icon-symbol.hbs)
-> * [icon-font.hbs](templates/icon-font.hbs)
 
 ## 💎 Usage
 
@@ -139,18 +110,18 @@ npm run icon
 
 ```javascript
 // Webpack
-import 'assets/styles/icon.css'
+import 'assets/styles/ixiaer.css'
 ```
 
 ```html
 <!-- Or Browser -->
-<link rel="stylesheet" type="text/css" href="assets/styles/icon.css" />
+<link rel="stylesheet" type="text/css" href="assets/styles/ixiaer.css" />
 ```
 
 ```html
 <!-- Use icons -->
-<i class="icon foo" />
-<i class="icon bar" />
+<i class="ixiaer-foo" />
+<i class="ixiaer-bar" />
 ```
 
 #### Symbol
@@ -161,25 +132,22 @@ import 'assets/styles/icon.css'
 
 ```javascript
 // Webpack
-import 'assets/scripts/icon.js'
+import 'assets/scripts/ixiaer.js'
 ```
 
 ```html
 <!-- Or Browser -->
-<script type="text/javascript" src="assets/scripts/icon.js"></script>
+<script type="text/javascript" src="assets/scripts/ixiaer.js"></script>
 ```
 
 ```html
 <!-- Use icons -->
-<svg class="icon" aria-hidden="true">
-  <use xlink:href="#foo" />
+<svg class="ixiaer" aria-hidden="true">
+  <use xlink:href="#ixiaer-foo" />
 </svg>
-<svg class="icon" aria-hidden="true">
-  <use xlink:href="#bar" />
+<svg class="ixiaer" aria-hidden="true">
+  <use xlink:href="#ixiaer-bar" />
 </svg>
 ```
 
-## 🏆 Available packages
-
-* [icon-ionicons](https://github.com/ixiaer/icon-ionicons)
-* [icon-logos](https://github.com/ixiaer/icon-logos)
+> If you like this project, please reward a star. Thank you 🙏
