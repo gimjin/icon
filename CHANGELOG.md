@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/ixiaer/icon/compare/v1.1.1...v1.1.2) (2019-05-26)
+
+
+### Bug Fixes
+
+* auto remove ttf ([0f7de93](https://github.com/ixiaer/icon/commit/0f7de93))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/ixiaer/icon/compare/v1.1.0...v1.1.1) (2019-05-26)
 
