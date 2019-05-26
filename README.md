@@ -10,18 +10,15 @@ npm install @ixiaer/icon
 
 ## 💡 Getting started
 
-Crafting font-icon or svg-symbol with *@ixiaer/icon* typically follows these steps:
+Responsive website icon simple Node API and CLI solution. Support multi-color(symbol) and single color(font) icons.
 
-1. Create a config file icon.config.js, icon.config.json or an icon field in a package.json file, all of which *@ixiaer/icon* will look for and read automatically, or you can specify a configuration file on the command line. If none of the above will use the node_modules/@ixiaer/icon/icon.config.js
-2. Register a couple of SVG source files for processing.
-3. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
+1. Register a couple of SVG source files for processing.
+2. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
 ## 🚸 Examples
 
-* [icon-feather](https://github.com/ixiaer/icon-feather)
-* [icon-ionicons](https://github.com/ixiaer/icon-ionicons)
-* [icon-font-awesome](https://github.com/ixiaer/icon-font-awesome)
-* [icon-logos (symbol)](https://github.com/ixiaer/icon-logos)
+* [svg -> font](https://github.com/ixiaer/icon-feather)
+* [svg -> symbol](https://github.com/ixiaer/icon-logos)
 
 ## ⚙️ Generator
 
@@ -121,8 +118,8 @@ import 'assets/styles/ixiaer.css'
 
 ```html
 <!-- Use icons -->
-<i class="ixiaer-foo" />
-<i class="ixiaer-bar" />
+<i class="ixiaer-foo"></i>
+<i class="ixiaer-bar"></i>
 ```
 
 #### Symbol
