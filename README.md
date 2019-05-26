@@ -17,7 +17,7 @@ Responsive website icon simple Node API and CLI solution. Support multi-color(sy
 
 ## 🚸 Examples
 
-* [svg -> font](https://github.com/ixiaer/icon-feather)
+* [svg -> font](https://github.com/ixiaer/icon-ionicons)
 * [svg -> symbol](https://github.com/ixiaer/icon-logos)
 
 ## ⚙️ Generator
