@@ -10,37 +10,25 @@ npm install @ixiaer/icon
 
 ## 💡 Getting started
 
-Responsive website icon simple Node API and CLI solution. Support multi-color(symbol) and single color(font) icons.
+Responsive website icon simple Node API and CLI solution. Support **multi-color**(symbol icon) and **single color**(font icon) icons.
 
 1. Register a couple of SVG source files for processing.
 2. Trigger the compilation process and receive the generated files(SVG, JS, Fonts, CSS).
 
-## 🚸 Examples
-
-* [svg -> font](https://github.com/ixiaer/icon-ionicons)
-* [svg -> symbol](https://github.com/ixiaer/icon-logos)
-
-## ⚙️ Generator
-
-#### CLI
-
-```bash
-# Icon font.
-npx icon font -i assets/icons/*.svg
-# alias ixiaer-icon
-npx ixiaer-icon symbol -i assets/icons/*.svg
-```
+## 💻 CLI Generator
 
 ```bash
 # help
 $ icon --help
 
-Usage: icon [font|symbol] [options] [font|symbol options] [arguments]
-       icon font -n ixiaer -i "icons/*.svg" --css-dest styles/
+Usage: icon [font|symbol] [options] [arguments]
+       icon -i "icons/*.svg" --css-dest styles/
+
+Must:
+  -i, --icons     $ icon -i "icons/*.svg"
 
 Options:
   -n, --name      $ icon -n ixiaer
-  -i, --icons     $ icon -i "icons/*.svg"
   -t, --template  $ icon -t template/icon-font.css
 
 Font options:
@@ -51,39 +39,42 @@ Font options:
 
 Symbol options:
   --js-dest   $ icon --js-dest scripts/
+
+Alias: ixiaer-icon > icon
 ```
 
 > Templates
 > * [icon-font.css](templates/icon-font.css)
 > * [icon-symbol.js](templates/icon-symbol.js)
 
-#### Node API
+## 🧩 Node API
 
 ```javascript
-const iconFont require('@ixiaer/icon/lib/icon-font.js')
-const iconSymbol require('@ixiaer/icon/lib/icon-symbol.js')
-
 /**
-  * Options
-  * @param {Object} opt - New assign options.
-  * @param {string} opt.name - Name of font and base name of font files.
+  * Must:
   * @param {string} opt.icons - List of SVG files.
+  *
+  * Options:
+  * @param {string} opt.name - Name of font and base name of font files.
   * @param {string} opt.template - Path of custom CSS template. Generator uses handlebars templates.
-  * 
-  * Font options
+  *
+  * Font options:
   * @param {string} opt.fontDest - Directory for generated font files.
   * @param {string} opt.cssDest - Path for generated CSS file.
   * @param {Array} opt.fontType - Font file types to generate. Possible values: ['svg', 'ttf', 'woff', 'woff2', 'eot'].
   * @param {Array} opt.cssType - Css file types to generate. Possible values: ['css', 'scss', 'less', 'stylus'].
   *
-  * Symbol options
+  * Symbol options:
   * @param {string} opt.jsDest - JavaScript output destination.
   */
- 
+
+const iconFont require('@ixiaer/icon/lib/icon-font.js')
+const iconSymbol require('@ixiaer/icon/lib/icon-symbol.js')
+
 iconFont({
   name: 'ixiaer',
-  icons: '../templates/logo.svg',
-  template: '../templates/icon-font.css',
+  icons: 'icons/*.svg',
+  template: 'templates/icon-font.css',
   fontDest: 'assets/fonts',
   cssDest: 'assets/styles',
   fontType: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
@@ -92,19 +83,17 @@ iconFont({
 
 iconSymbol({
   name: 'ixiaer',
-  icons: '../templates/logo.svg',
-  template: '../templates/icon-symbol.js',
+  icons: 'icons/*.svg',
+  template: 'templates/icon-symbol.js',
   jsDest: 'assets/scripts'
 })
 ```
 
-## 💎 Usage
+> Templates
+> * [icon-font.css](templates/icon-font.css)
+> * [icon-symbol.js](templates/icon-symbol.js)
 
-#### Font
-
-* Support **single color** icons
-* Resize by font-size style
-* Support for IE8+, and modern browsers
+## 💛 Font Icon Usage
 
 ```javascript
 // Webpack
@@ -112,8 +101,8 @@ import 'assets/styles/ixiaer.css'
 ```
 
 ```html
-<!-- Or Browser -->
-<link rel="stylesheet" type="text/css" href="assets/styles/ixiaer.css" />
+<!-- CDN -->
+<link href="assets/styles/ixiaer.css" rel="stylesheet" type="text/css" />
 ```
 
 ```html
@@ -122,11 +111,10 @@ import 'assets/styles/ixiaer.css'
 <i class="ixiaer-bar"></i>
 ```
 
-#### Symbol
+> <img src="https://raw.githubusercontent.com/ixiaer/icon-ionicons/master/icon-font.png" width="400"><br>
+> [Click try it!](https://ixiaer.github.io/icon-ionicons/example.html)
 
-* Support for **multi-color** icons
-* Resize by font-size style
-* Support for IE9+, and modern browsers
+## 💝 Symbol Icon Usage
 
 ```javascript
 // Webpack
@@ -147,5 +135,12 @@ import 'assets/scripts/ixiaer.js'
   <use xlink:href="#ixiaer-bar" />
 </svg>
 ```
+> <img src="https://raw.githubusercontent.com/ixiaer/icon-logos/master/icon-symbol.png" width="400"><br>
+> [Click try it!](https://ixiaer.github.io/icon-logos/example.html)
+
+## 🔗 Compatibility
+
+Font Icon: Support for IE8+, and modern browsers<br>
+Symbol Icon: Support for IE9+, and modern browsers
 
 > If you like this project, please reward a star. Thank you 🙏
