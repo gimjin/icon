@@ -34,8 +34,8 @@ Options:
 Font options:
   --font-dest  $ icon --font-dest fonts/
   --css-dest   $ icon --css-dest styles/
-  --font-type  $ icon --font-type "['svg', 'ttf', 'woff', 'woff2', 'eot']"
-  --css-type   $ icon --css-type "['css', 'scss', 'less', 'stylus']"
+  --font-type  $ icon --font-type "svg ttf woff woff2 eot"
+  --css-type   $ icon --css-type "css scss less stylus"
 
 Symbol options:
   --js-dest   $ icon --js-dest scripts/
