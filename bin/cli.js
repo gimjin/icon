@@ -36,8 +36,8 @@ if (argv.help || Object.keys(argv).length === 1) {
   console.info('Font options:')
   console.info('  --font-dest  $ icon --font-dest fonts/')
   console.info('  --css-dest   $ icon --css-dest styles/')
-  console.info('  --font-type  $ icon --font-type "svg ttf woff woff2 eot"')
-  console.info('  --css-type   $ icon --css-type "css scss less stylus"')
+  console.info('  --font-type  $ icon --font-type "svg,ttf,woff,woff2,eot"')
+  console.info('  --css-type   $ icon --css-type "css,scss,less,stylus"')
   console.info('')
   console.info('Symbol options:')
   console.info('  --js-dest  $ icon --js-dest scripts/')
@@ -65,10 +65,10 @@ if (argv._.includes('symbol')) {
 } else {
   // string to array
   if (argv.fontType) {
-    argv.fontType = argv.fontType.split(' ')
+    argv.fontType = argv.fontType.split(',')
   }
   if (argv.cssType) {
-    argv.cssType = argv.cssType.split(' ')
+    argv.cssType = argv.cssType.split(',')
   }
   iconFont(argv)
 }
