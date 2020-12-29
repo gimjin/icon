@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.5"></a>
+## [1.1.5](https://github.com/ixiaer/icon/compare/v1.1.4...v1.1.5) (2020-12-29)
+
+
+### Bug Fixes
+
+* windows CMD not support like --font-type "[\'svg\', \'ttf\']" ([68d5dfa](https://github.com/ixiaer/icon/commit/68d5dfa))
+
+
+
 <a name="1.1.4"></a>
 ## [1.1.4](https://github.com/ixiaer/icon/compare/v1.1.3...v1.1.4) (2020-04-11)
 
