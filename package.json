@@ -1,6 +1,6 @@
 {
   "name": "@ixiaer/icon",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Responsive website icon solution. Integration svg-sprite and webfonts-generator simple Node API and CLI. Support multi-color(symbol) and single color(font) icons.",
   "main": "index.js",
   "bin": {
